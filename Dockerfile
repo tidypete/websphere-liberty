@@ -4,7 +4,6 @@ RUN yum -y install wget unzip \
     && useradd -u 1001 -r -g 0 -s /usr/sbin/nologin default
 
 # Install IBM Java
-
 ENV JAVA_VERSION 1.8.0_sr5fp6
 RUN export BASE_URL="https://public.dhe.ibm.com/ibmdl/export/pub/systems/cloud/runtimes/java/meta/sdk/linux/x86_64/index.yml"; \
     && wget -q -U UA_IBM_JAVA_Docker -O /tmp/index.yml ${BASE_URL}; \
@@ -46,7 +45,6 @@ RUN /opt/ibm/wlp/bin/server create \
     && rm -rf $WLP_OUTPUT_DIR/.classCache /output/workarea
 
 # Install features
-
 RUN /opt/ibm/wlp/bin/installUtility install --acceptLicense webProfile-7.0 localConnector-1.0 jndi-1.0 adminCenter-1.0 appSecurity-2.0 concurrent-1.0 ldapRegistry-3.0 javaMail-1.5 jdbc-4.1 jaxrs-2.0 jpa-2.1 ssl-1.0 webCache-1.0 \
 
 # Create symlinks && set permissions for non-root user
