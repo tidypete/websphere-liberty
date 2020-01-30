@@ -1,4 +1,4 @@
-FROM centos:latest
+FROM centos:centos7
 
 RUN yum -y install wget unzip \
     && useradd -u 1001 -r -g 0 -s /usr/sbin/nologin default
