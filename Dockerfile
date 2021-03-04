@@ -26,7 +26,7 @@ RUN echo ${JAVA_HOME}; \
     echo ${PATH};
 
 # Install WebSphere Liberty
-ENV LIBERTY_VERSION 19.0.0_06
+ENV LIBERTY_VERSION 20.0.0_12
 RUN LIBERTY_URL=$(wget -q -O - https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/index.yml  | grep $LIBERTY_VERSION -A 3 | sed -n 's/\s*webProfile7:\s//p' | tr -d '\r')  \
     && echo $LIBERTY_URL \
     && wget -q $LIBERTY_URL -U UA-IBM-WebSphere-Liberty-Docker -O /tmp/wlp-beta.zip \
