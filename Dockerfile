@@ -27,7 +27,7 @@ RUN echo ${JAVA_HOME}; \
 
 # Install WebSphere Liberty
 ENV LIBERTY_VERSION 20.0.0_12
-RUN LIBERTY_URL=$(wget -q -O - https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/index.yml  | grep $LIBERTY_VERSION -A 3 | sed -n 's/\s*webProfile7:\s//p' | tr -d '\r')  \
+RUN LIBERTY_URL=$(wget -q -O - https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/index.yml  | grep $LIBERTY_VERSION -A 3 | sed -n 's/\s*webProfile8:\s//p' | tr -d '\r')  \
     && echo $LIBERTY_URL \
     && wget -q $LIBERTY_URL -U UA-IBM-WebSphere-Liberty-Docker -O /tmp/wlp-beta.zip \
     && unzip -q /tmp/wlp-beta.zip -d /opt/ibm \
@@ -45,7 +45,7 @@ RUN /opt/ibm/wlp/bin/server create \
     && rm -rf $WLP_OUTPUT_DIR/.classCache /output/workarea
 
 # Install features
-RUN /opt/ibm/wlp/bin/installUtility install --acceptLicense webProfile-7.0 localConnector-1.0 jndi-1.0 adminCenter-1.0 appSecurity-2.0 concurrent-1.0 ldapRegistry-3.0 javaMail-1.5 jdbc-4.1 jaxrs-2.0 jpa-2.1 ssl-1.0 webCache-1.0 \
+RUN /opt/ibm/wlp/bin/installUtility install --acceptLicense webProfile-8.0 localConnector-1.0 jndi-1.0 adminCenter-1.0 appSecurity-2.0 concurrent-1.0 ldapRegistry-3.0 javaMail-1.5 jdbc-4.1 jaxrs-2.0 jpa-2.1 ssl-1.0 webCache-1.0 \
 
 # Create symlinks && set permissions for non-root user
 RUN mkdir /logs \
